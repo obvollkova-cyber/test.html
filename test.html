@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Бухгалтерское обслуживание ИП и ООО в Москве и Московской области. Подготовка 3‑НДФЛ для физических лиц.">
+  <title>БалансЛаб — бухгалтерское обслуживание ИП и ООО</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;600;700&family=Unbounded:wght@600&display=swap">
+  <style>
+    :root {
+      --ink: #202020;
+      --muted: #484848;
+      --yellow: #ffe128;
+      --red: #e10032;
+      --paper: #f1f3f5;
+      --line: #d9dcdf;
+      --heading: 1.625rem;
+      --display: clamp(1.75rem, 4.3vw, 3.5rem);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: white;
+      color: var(--ink);
+      font: 1rem/1.55 Geologica, Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+    section[id] { scroll-margin-top: 1rem; }
+    .wrap { width: min(1160px, calc(100% - 4rem)); margin-inline: auto; }
+    .bar, .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .bar { min-height: 84px; }
+    .logo { display: block; width: 176px; height: auto; }
+    nav { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+    nav a, .phone { text-decoration: none; font-weight: 600; }
+    nav a:hover, .phone:hover { text-decoration: underline; }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 {
+      font-family: Unbounded, Geologica, Arial, sans-serif;
+      font-weight: 600;
+      line-height: 1.17;
+      letter-spacing: -.035em;
+    }
+    h1 { font-size: var(--display); overflow-wrap: anywhere; }
+    h2 { font-size: var(--heading); margin-bottom: 1.5rem; }
+    h3 { font-size: 1rem; }
+    .eyebrow { font-weight: 700; text-transform: uppercase; }
+    .muted { color: var(--muted); }
+
+    .hero { background: var(--yellow); padding-block: 3.5rem; }
+    .hero-grid, .split, .cards, .tiles, .row {
+      display: grid;
+      gap: 1rem;
+    }
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .partner { margin: 1.5rem 0 0; }
+    .regimes, .card, form {
+      border-radius: 1rem;
+      background: white;
+      padding: 1.5rem;
+    }
+    .tiles, .cards, .row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tiles a {
+      display: block;
+      padding: .9rem;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    .tiles a:hover { background: var(--yellow); }
+    .tiles strong, .tiles span { display: block; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: .7rem 1rem;
+      border: 1px solid var(--ink);
+      border-radius: .5rem;
+      background: var(--yellow);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: #ffb900; }
+    .hero .button { background: var(--ink); color: white; }
+    .hero .button:hover { background: #424242; }
+
+    .section, .split { padding-block: 3.5rem; }
+    .paper, footer { background: var(--paper); }
+    .card, form { border: 1px solid var(--line); }
+    .card { display: flex; flex-direction: column; align-items: flex-start; }
+    .card .button { margin-top: auto; }
+    .price { font-size: var(--heading); font-weight: 700; }
+    .price small { font-size: 1rem; font-weight: 400; }
+    details { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 700; }
+    details p { margin-top: .75rem; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.75rem;
+      padding-left: 1.5rem;
+    }
+
+    .split {
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      align-items: start;
+      gap: 2.5rem;
+    }
+    form { display: grid; gap: .8rem; }
+    label { display: block; min-width: 0; font-weight: 600; }
+    label span { color: var(--muted); font-weight: 400; }
+    input, select, textarea {
+      display: block;
+      width: 100%;
+      min-height: 44px;
+      margin-top: .25rem;
+      padding: .5rem .65rem;
+      border: 1px solid #818181;
+      border-radius: .4rem;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+    textarea { resize: vertical; }
+    .demo, .status, .footer p, .company p { margin: 0; }
+    .status:empty { display: none; }
+    .status { background: var(--yellow); border-radius: .4rem; padding: .7rem; }
+    .footer { padding-block: 1.5rem; flex-wrap: wrap; }
+    .company { border-top: 1px solid var(--line); padding-block: 1rem 1.5rem; }
+
+    @media (max-width: 800px) {
+      .wrap { width: calc(100% - 2.25rem); }
+      .bar { flex-wrap: wrap; padding-block: .75rem; }
+      nav { order: 3; width: 100%; }
+      .hero-grid, .split, .steps { grid-template-columns: 1fr; gap: 1.25rem; }
+      .hero, .section, .split { padding-block: 2rem; }
+    }
+    @media (max-width: 520px) {
+      .cards, .row { grid-template-columns: 1fr; }
+      .logo { width: 132px; }
+      .regimes, .card, form { padding: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap bar">
+      <a href="#top" aria-label="БалансЛаб, на главную">
+        <img class="logo" src="logo.svg" alt="БалансЛаб">
+      </a>
+      <nav aria-label="Главное меню">
+        <a href="#services">Налоговые режимы</a>
+        <a href="#prices">Тарифы</a>
+        <a href="#ndfl">3‑НДФЛ</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a class="phone" href="tel:+79267571012">+7 926 757‑10‑12</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Москва и Московская область</p>
+          <h1>Бухгалтерия для ИП и ООО</h1>
+          <p>Ведём бухгалтерский и налоговый учёт, рассчитываем налоги и сдаём отчётность. Работаем дистанционно и принимаем очно.</p>
+          <div class="actions">
+            <a class="button" href="#business">Узнать стоимость</a>
+            <a href="#ndfl">Подготовить 3‑НДФЛ</a>
+          </div>
+          <p class="partner">БалансЛаб — партнёр сети «1С:БухОбслуживание»</p>
+        </div>
+
+        <div class="regimes" id="services">
+          <h2>Выберите налоговый режим</h2>
+          <div class="tiles">
+            <a href="#business" data-regime="УСН 6%"><strong>УСН 6%</strong><span>Доходы</span></a>
+            <a href="#business" data-regime="УСН 15%"><strong>УСН 15%</strong><span>Доходы минус расходы</span></a>
+            <a href="#business" data-regime="ОСНО"><strong>ОСНО</strong><span>Общая система</span></a>
+            <a href="#business" data-regime="АУСН"><strong>АУСН</strong><span>Автоматизированная УСН</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper" id="prices">
+      <div class="wrap">
+        <p class="eyebrow">Тарифы</p>
+        <h2>Что входит в обслуживание</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Комплексный сервис</h3>
+            <p class="price">От 7 000 ₽ <small>в месяц, без НДС</small></p>
+            <p class="muted">Предварительная стоимость при объёме до 10 хозяйственных операций и одном сотруднике.</p>
+            <ul>
+              <li>Бухгалтерский и налоговый учёт</li>
+              <li>Обработка первичных документов</li>
+              <li>Расчёт налогов и сдача отчётности</li>
+              <li>Расчет заработной платы и кадровый учет</li>
+              <li>Консультации и доступ к облачной «1С:Бухгалтерии 3.0»</li>
+            </ul>
+            <a class="button" href="#business" data-service="Комплексный сервис">Запросить расчёт</a>
+          </article>
+
+          <article class="card">
+            <h3>Расчет заработной платы и кадровый учет</h3>
+            <p class="price">От 4 500 ₽ <small>в месяц, без НДС</small></p>
+            <p class="muted">При 1–3 сотрудниках. При 4–5 сотрудниках — от 5 500 ₽ в месяц без НДС.</p>
+            <ul>
+              <li>Расчёт зарплаты</li>
+              <li>Ведение кадровой документации</li>
+              <li>Отчётность по сотрудникам</li>
+            </ul>
+            <a class="button" href="#business" data-service="Расчет заработной платы и кадровый учет">Запросить расчёт</a>
+          </article>
+        </div>
+
+        <details>
+          <summary>Какие работы можно заказать отдельно?</summary>
+          <p>Подготовку платёжных поручений, налоговое планирование, обучение работе с первичными документами в 1С, подключение дополнительных лицензий и сервисов, настройку кассы и маркировки.</p>
+        </details>
+
+        <details>
+          <summary>Что входит в экспресс-аудит?</summary>
+          <p>Проверяем данные учёта и отчётность, готовим акт с выявленными недостатками и возможными рисками. Перед получением базы согласуем порядок передачи данных и подписываем соглашение о конфиденциальности.</p>
+          <a href="#business" data-service="Экспресс-аудит">Уточнить условия экспресс-аудита</a>
+        </details>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <h2>Как начать работу</h2>
+      <ol class="steps">
+        <li><h3>Оставьте заявку</h3><p>Укажите форму бизнеса и налоговый режим.</p></li>
+        <li><h3>Обсудим задачи и стоимость</h3><p>Уточним объём операций, число сотрудников и состав работ.</p></li>
+        <li><h3>Согласуем договор</h3><p>Зафиксируем условия и определим дату начала обслуживания.</p></li>
+      </ol>
+    </section>
+
+    <section class="paper" id="business">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Для ИП и ООО</p>
+          <h2>Узнайте стоимость обслуживания</h2>
+          <p>Обсудим, какие задачи взять на сопровождение, и подготовим расчёт.</p>
+        </div>
+
+        <form method="post" aria-label="Заявка на расчёт"
+              data-confirmation="Спасибо! Тестовая заявка на расчёт заполнена.">
+          <div class="row">
+            <label>Форма бизнеса
+              <select name="business" required>
+                <option value="">Выберите</option>
+                <option>ИП</option>
+                <option>ООО</option>
+              </select>
+            </label>
+            <label>Налоговый режим
+              <select id="regime" name="regime" required>
+                <option value="">Выберите</option>
+                <option>УСН 6%</option>
+                <option>УСН 15%</option>
+                <option>ОСНО</option>
+                <option>АУСН</option>
+                <option>Не знаю</option>
+              </select>
+            </label>
+          </div>
+          <label>Услуга
+            <select id="service" name="service">
+              <option>Комплексный сервис</option>
+              <option>Расчет заработной платы и кадровый учет</option>
+              <option>Экспресс-аудит</option>
+            </select>
+          </label>
+          <div class="row">
+            <label>Имя <span>необязательно</span>
+              <input name="name" autocomplete="given-name">
+            </label>
+            <label>Телефон
+              <input name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+            </label>
+          </div>
+          <label>Комментарий <span>необязательно</span>
+            <textarea name="comment" rows="2"></textarea>
+          </label>
+          <button class="button" type="submit" disabled>Отправить заявку на расчёт</button>
+          <p class="demo muted">Демонстрационная форма. Данные не отправляются.</p>
+          <p class="status" role="status" tabindex="-1"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="ndfl">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Для физических лиц</p>
+          <h2>Подготовим декларацию 3‑НДФЛ</h2>
+          <p>Уточним, для чего нужна декларация, и подскажем, какие документы потребуются.</p>
+        </div>
+
+        <form method="post" aria-label="Заявка на 3‑НДФЛ"
+              data-confirmation="Спасибо! Тестовая заявка на 3‑НДФЛ заполнена.">
+          <div class="row">
+            <label>Имя <span>необязательно</span>
+              <input name="name" autocomplete="given-name">
+            </label>
+            <label>Телефон
+              <input name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+            </label>
+          </div>
+          <label>Для чего нужна декларация? <span>необязательно</span>
+            <textarea name="purpose" rows="2"></textarea>
+          </label>
+          <button class="button" type="submit" disabled>Узнать стоимость</button>
+          <p class="demo muted">Демонстрационная форма. Данные не отправляются.</p>
+          <p class="status" role="status" tabindex="-1"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacts">
+    <div class="wrap footer">
+      <a href="#top"><img class="logo" src="logo.svg" alt="БалансЛаб"></a>
+      <div>
+        <p>Очный приём по предварительной договорённости</p>
+        <p>Балашиха, мкр. Кучино, ул. Смельчак, д. 7</p>
+      </div>
+      <div>
+        <a href="tel:+79267571012">+7 926 757‑10‑12</a><br>
+        <a href="mailto:balanslab@mail.ru">balanslab@mail.ru</a>
+      </div>
+    </div>
+    <div class="wrap company">
+      <p>ООО «ГАММА» · ИНН 5012000773 · КПП 501201001 · ОГРН 1035002455850</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const regime = document.querySelector('#regime');
+      const service = document.querySelector('#service');
+
+      document.querySelectorAll('[data-regime], [data-service]').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (link.dataset.regime) regime.value = link.dataset.regime;
+          if (link.dataset.service) service.value = link.dataset.service;
+        });
+      });
+
+      document.querySelectorAll('form[data-confirmation]').forEach((form) => {
+        const phone = form.elements.phone;
+        const status = form.querySelector('.status');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        phone.addEventListener('input', () => phone.setCustomValidity(''));
+
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          status.textContent = '';
+
+          const digits = phone.value.replace(/\D/g, '');
+          if (!/^[78]?\d{10}$/.test(digits)) {
+            phone.setCustomValidity('Укажите телефон с кодом города или оператора.');
+            phone.reportValidity();
+            return;
+          }
+
+          form.reset();
+          status.textContent = form.dataset.confirmation;
+          status.focus();
+        });
+
+        submitButton.disabled = false;
+      });
+    })();
+  </script>
+</body>
+</html>
